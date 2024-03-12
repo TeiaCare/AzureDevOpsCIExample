@@ -13,7 +13,6 @@ jobs:
       matrix: 
         BUILD_TYPE: [Debug, Release]
         COMPILER: [gcc, clang]
-        COMPILER_VERSION: [12, 15]
         include:
         - COMPILER: 'gcc'
           COMPILER_VERSION: 12
