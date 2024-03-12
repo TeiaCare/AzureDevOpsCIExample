@@ -4,13 +4,6 @@ on:
   workflow_dispatch:
   pull_request:
   push:
-    branches:
-      - 'develop'
-      - 'feature/*'
-      - 'release/*'
-      - 'hotfix/*'
-    tags:
-      - 'v*'
 
 jobs:
   build:
@@ -23,10 +16,10 @@ jobs:
         COMPILER_VERSION: [12, 15]
         include:
           - OS: 'ubuntu-22.04'
-            COMPILER: 'gcc'
+            COMPILER: gcc
             COMPILER_VERSION: 12
           - OS: 'ubuntu-22.04'
-            COMPILER: 'clang'
+            COMPILER: clang
             COMPILER_VERSION: 15
 
     env:
