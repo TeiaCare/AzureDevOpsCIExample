@@ -59,7 +59,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-          name: artifact-*
+          pattern: 'artifact-*'
           path: artifacts
 
       - name: Display Contents
