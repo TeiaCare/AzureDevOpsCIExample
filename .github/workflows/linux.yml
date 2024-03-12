@@ -39,3 +39,33 @@ jobs:
           echo Version - ${{matrix.COMPILER_VERSION}}
           echo BUILD_TYPE - ${{matrix.BUILD_TYPE}}
           echo CONAN_USER_HOME - ${{env.CONAN_USER_HOME}}
+
+      - name: Create Text File
+        run: echo "${{matrix.COMPILER}} ${{matrix.COMPILER_VERSION}} ${{matrix.BUILD_TYPE}}" > file-${{matrix.COMPILER}}_${{matrix.COMPILER_VERSION}}_${{matrix.BUILD_TYPE}}.txt
+
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-${{matrix.COMPILER}}_${{matrix.COMPILER_VERSION}}_${{matrix.BUILD_TYPE}}
+          path: file-${{matrix.COMPILER}}_${{matrix.COMPILER_VERSION}}_${{matrix.BUILD_TYPE}}.txt
+
+  download_artifact:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact-*
+          path: artifacts
+
+      - name: Display Contents
+        run: |
+          ls -l artifacts
+          cat artifacts/file-gcc_12_Debug.txt
+          cat artifacts/file-gcc_12_Release.txt
+          cat artifacts/file-clang_15_Debug.txt
+          cat artifacts/file-clang_15_Release.txt
