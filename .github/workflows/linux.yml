@@ -15,7 +15,6 @@ on:
 jobs:
   build:
     runs-on: ${{matrix.OS}}
-    name: ${{matrix.COMPILER}}-${{matrix.COMPILER_VERSION}}_${{matrix.BUILD_TYPE}}
     strategy:
       fail-fast: false
       matrix: 
