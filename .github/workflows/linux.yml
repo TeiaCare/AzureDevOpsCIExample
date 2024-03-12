@@ -19,13 +19,13 @@ jobs:
       fail-fast: false
       matrix: 
         BUILD_TYPE: [Debug, Release]
+        COMPILER: [gcc, clang]
+        COMPILER_VERSION: [12, 15]
         include:
-          - NAME: ubuntu2204_gcc12
-            OS: 'ubuntu-22.04'
+          - OS: 'ubuntu-22.04'
             COMPILER: 'gcc'
-            COMPILER_VERSION: 12            
-          - NAME: ubuntu2204_clang15
-            OS: 'ubuntu-22.04'
+            COMPILER_VERSION: 12
+          - OS: 'ubuntu-22.04'
             COMPILER: 'clang'
             COMPILER_VERSION: 15
 
