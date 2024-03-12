@@ -14,13 +14,6 @@ jobs:
         BUILD_TYPE: [Debug, Release]
         COMPILER: [gcc, clang]
         COMPILER_VERSION: [12, 15]
-        include:
-          - OS: 'ubuntu-22.04'
-            COMPILER: gcc
-            COMPILER_VERSION: 12
-          - OS: 'ubuntu-22.04'
-            COMPILER: clang
-            COMPILER_VERSION: 15
 
     env:
       CONAN_USER_HOME: ${{github.workspace}}
